@@ -9,14 +9,13 @@ const authToken = 'YOUR_TOKEN_HERE'; // Substitua pelo seu token real
 let createdInvoiceId: number;
 
 describe('Testes de integração para a API de Invoices', () => {
-
   // Teste POST - Criar uma nova invoice
   it('Deve criar uma nova invoice', async () => {
     const invoiceData = {
       customer_id: 1,
       due_date: '2025-05-20',
       invoice_number: `INV-${Date.now()}`,
-      total: 100.00,
+      total: 100.0
     };
 
     const response = await request(baseURL)
@@ -60,12 +59,12 @@ describe('Testes de integração para a API de Invoices', () => {
       .put(`/invoices/${createdInvoiceId}`)
       .set('Authorization', `Bearer ${authToken}`) // Adicionando o token de autenticação
       .send({
-        total: 200.00
+        total: 200.0
       });
 
     // Verifica se o status é 200 e se o valor da invoice foi atualizado
     expect(response.status).toBe(200);
-    expect(response.body).toHaveProperty('total', 200.00);
+    expect(response.body).toHaveProperty('total', 200.0);
   });
 
   // Teste DELETE - Excluir invoice
@@ -73,7 +72,7 @@ describe('Testes de integração para a API de Invoices', () => {
     const response = await request(baseURL)
       .delete(`/invoices/${createdInvoiceId}`)
       .set('Authorization', `Bearer ${authToken}`); // Adicionando o token de autenticação
-    
+
     // Verifica se a exclusão foi bem-sucedida (status 204 significa sem conteúdo)
     expect(response.status).toBe(204);
   });
@@ -83,7 +82,7 @@ describe('Testes de integração para a API de Invoices', () => {
     const response = await request(baseURL)
       .get(`/invoices/${createdInvoiceId}`)
       .set('Authorization', `Bearer ${authToken}`); // Adicionando o token de autenticação
-    
+
     // Verifica se a invoice deletada retorna um erro 404
     expect(response.status).toBe(404);
   });
