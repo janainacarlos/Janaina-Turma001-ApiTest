@@ -2,6 +2,11 @@
 
 > Simple integration between JestJS and PactumJS.
 
+Comando para rodar:
+
+ 1. `npm install --save-dev supertest`
+ 1. `yarn add --dev supertest`
+
 ## GitHub Actions
 
 [![Node.js CI](https://github.com/ugioni/integration-tests-jest/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/ugioni/integration-tests-jest/actions/workflows/node.js.yml)
